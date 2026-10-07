@@ -1,0 +1,28 @@
+`timescale 1ns / 1ps
+
+module tb_light;
+
+reg clk;
+reg reset;
+wire red, yellow, green;
+
+traffic_light uut (
+    .clk(clk),
+    .reset(reset),
+    .red(red),
+    .yellow(yellow),
+    .green(green)
+);
+
+initial begin
+    clk = 0;
+    forever #5 clk = ~clk;
+end
+
+initial begin
+    reset = 1;
+    #20 reset = 0;
+    #500 $finish;
+end
+
+endmodule
