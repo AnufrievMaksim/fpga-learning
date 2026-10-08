@@ -6,7 +6,7 @@
 
 ### Light (FSM)
 
-Реализовал светофор на Verilog — FSM Moore.
+Светофор на Verilog — FSM Moore.
 
 **Что делает:**
 - Три состояния: RED, GREEN, YELLOW.
@@ -14,15 +14,8 @@
 - RED = 10 тактов, GREEN = 10, YELLOW = 5.
 
 **Файлы:**
-- `light.v` — модуль светофора
-- `tb_light.v` — testbench
+- `light/light.v` — модуль светофора
+- `light/tb_light.v` — testbench
 
-**Симуляция:**
-Симулировал в EDA Playground.
+![Симуляция](light/simulation.PNG)
 
-## Стек
-Verilog HDL, EDA Playground
-
-## Симуляция
-
-![Симуляция светофора](simulation.PNG)
