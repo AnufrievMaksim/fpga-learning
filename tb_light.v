@@ -23,6 +23,11 @@ initial begin
     reset = 1;
     #20 reset = 0;
     #500 $finish;
-end
-
+end 
+    
+initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(0, tb_light);
+end 
+    
 endmodule
