@@ -32,7 +32,7 @@
 - `uart_tx/uart_tx.v` — модуль передатчика
 - `uart_tx/tb_uart_tx.v` — testbench
 
-![Симуляция](uart_tx/simulation.PNG)
+![Симуляция](uart_tx/simulation_uart_tx.PNG)
 
 *BAUD = 5 000 000 (ускорено для симуляции).*
 
