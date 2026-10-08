@@ -22,3 +22,7 @@
 
 ## Стек
 Verilog HDL, EDA Playground
+
+## Симуляция
+
+![Симуляция светофора](simulation.png)
