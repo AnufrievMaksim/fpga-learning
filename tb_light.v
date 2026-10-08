@@ -6,7 +6,7 @@ reg clk;
 reg reset;
 wire red, yellow, green;
 
-traffic_light uut (
+light uut (
     .clk(clk),
     .reset(reset),
     .red(red),
