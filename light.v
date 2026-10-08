@@ -1,4 +1,4 @@
-module traffic_light (
+module light (
     input wire clk,
     input wire reset,
     output reg red,
