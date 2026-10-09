@@ -71,4 +71,19 @@
 
 *На диаграмме: duty = 64 (25%), 128 (50%), 192 (75%).*
 
+### UART Loopback (Verilog)
+
+Соединение UART TX и RX — loopback.
+
+**Что делает:**
+- TX передаёт байт.
+- RX принимает тот же байт.
+- Проверка: отправил 0x41 → принял 0x41.
+
+**Файлы:**
+- `uart_loopback/uart_loopback.v` — соединение TX + RX
+- `uart_loopback/tb_uart_loopback.v` — testbench
+
+![Симуляция](uart_loopback/simulation_UART_loopback.PNG)
+
 
