@@ -84,6 +84,8 @@
 - `uart_loopback/uart_loopback.v` — соединение TX + RX
 - `uart_loopback/tb_uart_loopback.v` — testbench
 
+![Симуляция](uart_loopback/simulation_UART_loopback.PNG)
+
 ### VGA Controller (Verilog)
 
 VGA-контроллер 640x480 @ 60 Гц.
@@ -99,6 +101,6 @@ VGA-контроллер 640x480 @ 60 Гц.
 
 ![Симуляция](vga/simulation_vga.PNG)
 
-![Симуляция](uart_loopback/simulation_UART_loopback.PNG)
+
 
 
