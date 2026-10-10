@@ -84,6 +84,21 @@
 - `uart_loopback/uart_loopback.v` — соединение TX + RX
 - `uart_loopback/tb_uart_loopback.v` — testbench
 
+### VGA Controller (Verilog)
+
+VGA-контроллер 640x480 @ 60 Гц.
+
+**Что делает:**
+- Генерирует HSYNC и VSYNC.
+- Координаты пикселя (x, y).
+- Сигнал video_on для видимой области.
+
+**Файлы:**
+- `vga/vga_controller.v` — контроллер
+- `vga/tb_vga.v` — testbench
+
+![Симуляция](vga/simulation_vga.PNG)
+
 ![Симуляция](uart_loopback/simulation_UART_loopback.PNG)
 
 
