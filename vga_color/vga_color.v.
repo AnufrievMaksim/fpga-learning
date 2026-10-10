@@ -1,0 +1,80 @@
+module vga_color_bars (
+    input wire clk,
+    input wire reset,
+    output reg hsync,
+    output reg vsync,
+    output reg [3:0] red,
+    output reg [3:0] green,
+    output reg [3:0] blue
+);
+
+// Параметры VGA 640x480 @ 60 Гц
+localparam H_VISIBLE  = 640;
+localparam H_FRONT    = 16;
+localparam H_SYNC     = 96;
+localparam H_BACK     = 48;
+localparam H_TOTAL    = H_VISIBLE + H_FRONT + H_SYNC + H_BACK;  // 800
+
+localparam V_VISIBLE  = 480;
+localparam V_FRONT    = 10;
+localparam V_SYNC     = 2;
+localparam V_BACK     = 33;
+localparam V_TOTAL    = V_VISIBLE + V_FRONT + V_SYNC + V_BACK;  // 525
+
+reg [9:0] h_cnt;
+reg [9:0] v_cnt;
+
+// Счётчик по горизонтали
+always @(posedge clk or posedge reset) begin
+    if (reset) h_cnt <= 0;
+    else if (h_cnt == H_TOTAL - 1) h_cnt <= 0;
+    else h_cnt <= h_cnt + 1;
+end
+
+// Счётчик по вертикали
+always @(posedge clk or posedge reset) begin
+    if (reset) v_cnt <= 0;
+    else if (h_cnt == H_TOTAL - 1) begin
+        if (v_cnt == V_TOTAL - 1) v_cnt <= 0;
+        else v_cnt <= v_cnt + 1;
+    end
+end
+
+// HSYNC
+always @(*) begin
+    if (h_cnt < H_VISIBLE + H_FRONT) hsync = 1'b1;
+    else if (h_cnt < H_VISIBLE + H_FRONT + H_SYNC) hsync = 1'b0;
+    else hsync = 1'b1;
+end
+
+// VSYNC
+always @(*) begin
+    if (v_cnt < V_VISIBLE + V_FRONT) vsync = 1'b1;
+    else if (v_cnt < V_VISIBLE + V_FRONT + V_SYNC) vsync = 1'b0;
+    else vsync = 1'b1;
+end
+
+// Формирование видеосигнала цветных полос
+always @(*) begin
+    // Проверка нахождения в видимой области экрана
+    if (h_cnt < H_VISIBLE && v_cnt < V_VISIBLE) begin
+        // Разделение видимой строки на 8 зон по 80 пикселей
+        case (h_cnt / 80)
+            0: begin red = 4'hF; green = 4'h0; blue = 4'h0; end  // Красный
+            1: begin red = 4'h0; green = 4'hF; blue = 4'h0; end  // Зелёный
+            2: begin red = 4'h0; green = 4'h0; blue = 4'hF; end  // Синий
+            3: begin red = 4'hF; green = 4'hF; blue = 4'h0; end  // Жёлтый
+            4: begin red = 4'h0; green = 4'hF; blue = 4'hF; end  // Голубой
+            5: begin red = 4'hF; green = 4'h0; blue = 4'hF; end  // Фиолетовый
+            6: begin red = 4'hF; green = 4'hF; blue = 4'hF; end  // Белый
+            7: begin red = 4'h0; green = 4'h0; blue = 4'h0; end  // Чёрный
+            default: begin red = 4'h0; green = 4'h0; blue = 4'h0; end
+        endcase
+    end else begin
+        // Формирование уровня черного вне видимой области
+        red = 4'h0; green = 4'h0; blue = 4'h0;
+    end
+end
+
+endmodule
+
