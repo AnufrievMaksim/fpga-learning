@@ -101,6 +101,20 @@ VGA-контроллер 640x480 @ 60 Гц.
 
 ![Симуляция](vga/simulation_vga.PNG)
 
+### VGA Color (Verilog)
+
+VGA-контроллер с цветными полосами.
+
+**Что делает:**
+- Генерирует HSYNC и VSYNC.
+- 8 цветных полос по 80 пикселей.
+- RGB444 (12 бит).
+
+**Файлы:**
+- `vga_color/vga_color_bars.v` — контроллер
+- `vga_color/tb_vga_color.v` — testbench
+
+![Симуляция](vga_color/simulation_vga_color.PNG)
 
 
 
