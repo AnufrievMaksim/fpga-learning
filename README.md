@@ -116,6 +116,24 @@ VGA-контроллер с цветными полосами.
 
 ![Симуляция](vga_color/simulation_vga_color.PNG)
 
+### SPI Master (Verilog)
+
+SPI Master на Verilog.
+
+**Что делает:**
+- Генерирует SCK, MOSI, CS.
+- Отправляет байт (старший бит вперёд).
+- Принимает байт по MISO.
+- Режим SPI 0 (CPOL=0, CPHA=0).
+
+**Файлы:**
+- `spi/spi_master.v` — модуль SPI
+- `spi/tb_spi_master.v` — testbench
+
+![Симуляция](spi/simulation_spi.PNG)
+
+*Отправлено 0x5A, принято 0xA5.*
+
 ### I2C Master (Verilog)
 
 I2C Master на Verilog.
