@@ -116,5 +116,20 @@ VGA-контроллер с цветными полосами.
 
 ![Симуляция](vga_color/simulation_vga_color.PNG)
 
+### I2C Master (Verilog)
+
+I2C Master на Verilog.
+
+**Что делает:**
+- Генерирует START, адрес, данные, ACK, STOP.
+- 7-битная адресация.
+- 100 кГц.
+
+**Файлы:**
+- `i2c/i2c_master.v` — модуль I2C
+- `i2c/tb_i2c_master.v` — testbench
+
+![Симуляция](i2c/simulation_i2c.PNG)
+
 
 
